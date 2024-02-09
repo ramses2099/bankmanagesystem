@@ -1,5 +1,6 @@
 package com.jprograming.form;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
@@ -30,10 +31,14 @@ public class FrmSignUpOne extends JFrame {
     private JRadioButton rbtnFemale;
     private JRadioButton rbtnMarrie;
     private JRadioButton rbtnSingle;
+    private JButton btnNext;
+    private ButtonGroup btngrpStatusMarital;
     private ButtonGroup btngrpGender;
     private Random random;
 
     public FrmSignUpOne() {
+        setContentPane(pnlPrincipal);
+        getContentPane().setBackground(Color.WHITE);
 
         setTitle(TITLE_FROM);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -47,16 +52,25 @@ public class FrmSignUpOne extends JFrame {
 
         random = new Random();
         Long formNumber = (Math.abs((random.nextLong() % 900L) + 1000L));
-        lblTitle = new JLabel();
-        lblTitle.setText(String.format("APPLICATION NO.:%S",formNumber));
-        lblDetails = new JLabel();
-        lblFirstName = new JLabel();
-        txtFirstName = new JTextField();
-        rbtnMale = new JRadioButton();
-        rbtnFemale = new JRadioButton();
+        lblTitle.setText(String.format("APPLICATION NO.:%s", formNumber));
+        //
         btngrpGender = new ButtonGroup();
         btngrpGender.add(rbtnMale);
         btngrpGender.add(rbtnFemale);
+        //
+        btngrpStatusMarital = new ButtonGroup();
+        btngrpStatusMarital.add(rbtnMarrie);
+        btngrpStatusMarital.add(rbtnSingle);
+        //
+        btnNext.setBackground(Color.BLACK);
+        btnNext.setForeground(Color.WHITE);
+
+        try {
+            ImageIcon imageIcon = new ImageIcon(ImageIO.read(getClass().getResourceAsStream("/icons/logo.jpg")));
+            setIconImage(imageIcon.getImage());
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
 
 
 
