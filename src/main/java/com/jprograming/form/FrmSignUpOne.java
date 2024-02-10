@@ -1,5 +1,7 @@
 package com.jprograming.form;
 
+import com.jprograming.db.DbConnectionPostgress;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -74,6 +76,12 @@ public class FrmSignUpOne extends JFrame {
 
 
 
+        try {
+            DbConnectionPostgress connectionPostgress = new DbConnectionPostgress();
+            connectionPostgress.testConnection();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
 
 
 
